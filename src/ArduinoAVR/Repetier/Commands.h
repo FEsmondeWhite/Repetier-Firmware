@@ -26,6 +26,15 @@
 #ifndef COMMANDS_H_INCLUDED
 #define COMMANDS_H_INCLUDED
 
+#if defined(Z_PROBE_IIS2DH) && Z_PROBE_IIS2DH == 1
+void accelerometer_send(uint8_t);
+void accelerometer_write(uint8_t, uint8_t);
+bool accelerometer_recv(uint8_t);
+void accelerometer_init();
+bool accelerometer_status();
+bool accelerometer_ready();
+#endif // Z_PROBE_IIS2DH
+
 class Commands {
 public:
   static void commandLoop();

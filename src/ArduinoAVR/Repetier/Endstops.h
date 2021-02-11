@@ -163,7 +163,11 @@ class Endstops
         static INLINE bool zProbe()
         {
 #if FEATURE_Z_PROBE
+#if defined(Z_PROBE_IIS2DH) && Z_PROBE_IIS2DH == 1
+                return (Z_PROBE_ON_HIGH ? READ(Z_PROBE_PIN) : !READ(Z_PROBE_PIN));
+#else
                 return (lastState & ENDSTOP_Z_PROBE_ID) != 0;
+#endif // Z_PROBE_IIS2DH         
 #else
                 return false;
 #endif
